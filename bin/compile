@@ -74,8 +74,6 @@ fi
 
 minecraft_url=${MINECRAFT_VERSION:-"https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.15.2.jar"}
 
-curl https://rclone.org/install.sh | sudo bash
-
 echo -n "-----> Installing Minecraft ${minecraft_version}... "
 curl -o minecraft.jar -s -L $minecraft_url
 mv minecraft.jar $BUILD_DIR/minecraft.jar
