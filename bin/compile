@@ -72,18 +72,14 @@ else
   minecraft_url="https://s3.amazonaws.com/Minecraft.Download/versions/${minecraft_version}/minecraft_server.${minecraft_version}.jar"
 fi
 
-minecraft_url=${MINECRAFT_VERSION:-"https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.15.2.jar"}
+minecraft_url="https://cdn.getbukkit.org/craftbukkit/craftbukkit-1.15.2.jar"
 
 echo -n "-----> Installing Minecraft ${minecraft_version}... "
 curl -o minecraft.jar -s -L $minecraft_url
 mv minecraft.jar $BUILD_DIR/minecraft.jar
 echo "done"
 
-if [ -n "${MINECRAFT_EULA:-""}" ]; then
-  echo -n "-----> Accepting Minecraft EULA... "
-  echo "eula=true" >> $BUILD_DIR/eula.txt
-  echo "done"
-fi
+echo eula=true > eula.txt
 
 mkdir -p $BUILD_DIR/bin
 [ ! -f $BUILD_DIR/minecraft ]   && cp $OPT_DIR/minecraft $BUILD_DIR/bin
